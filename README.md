@@ -1,5 +1,5 @@
 # lets-go
-simple web server that listens on port :4000, on;y has one endpoint that returns a simple string.
+simple web server that listens on port :4000, endpoints return simple strings for now
 
 ## How to ruh
 to run the server locally, go into the main directory and run
