@@ -26,12 +26,17 @@ func snippetCreate(w http.ResponseWriter, r *http.Request) {
 	w.Write([]byte("Display a form for creating a new snippet..."))
 }
 
+func snippetCreatePost(w http.ResponseWriter, r *http.Request) {
+	w.Write([]byte("Save new snippet..."))
+}
+
 func main() {
 	mux := http.NewServeMux()
 
-	mux.HandleFunc("/{$}", home) // {$} will restrict the subtree path, the home handler will only be called when we exactly call the / path
-	mux.HandleFunc("/snippet/view/{id}", snippetView)
-	mux.HandleFunc("/snippet/create", snippetCreate)
+	mux.HandleFunc("GET /{$}", home) // {$} will restrict the subtree path, the home handler will only be called when we exactly call the / path
+	mux.HandleFunc("GET /snippet/view/{id}", snippetView)
+	mux.HandleFunc("GET /snippet/create", snippetCreate)
+	mux.HandleFunc("POST /snippet/create", snippetCreatePost)
 
 	log.Print("starting server on :4000")
 
